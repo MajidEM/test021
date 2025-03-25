@@ -10,11 +10,20 @@
     {
       "description": "Update minor/patch versions for Go Docker images",
       "matchPackagePrefixes": ["golang"],
-      "matchUpdateTypes": ["minor", "patch"],
       "versioning": "docker",
+      "allowedVersions": "/\\d+\\.\\d+$ | \\d+\\.\\d+\\.\\d+$ | \\d+\\.\\d+\\-[a-z]+$ | \\d+\\.\\d+\\.\\d+\\-[a-z]+$/",
       "enabled": true,
       "ignorePaths": [],
       "pinDigests": true,
+      "major": {
+          "enabled": false
+        },
+        "minor": {
+          "enabled": true
+        },
+        "patch": {
+          "enabled": true
+        },
       "groupName": "Go Docker images"
     }
   ],
