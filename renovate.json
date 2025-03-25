@@ -3,37 +3,25 @@
   "extends": [
     "config:recommended"
   ],
-  "enabledManagers": [
-    "dockerfile"
-  ],
   "packageRules": [
     {
-      "matchCategories": [
-        "docker"
-      ],
-      "enabled": true
-    },
-    {
-      "matchDatasources": [
-        "docker"
-      ],
+      "description": "Update minor/patch versions for Go Docker images",
+      "matchManagers": ["dockerfile", "docker-compose"],
+      "matchPackagePrefixes": ["golang"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "enabled": true,
+      "ignorePaths": [],
+      "pinDigests": true,
       "versioning": "docker",
-      "allowedVersions": "/\\d+\\.\\d+$ | \\d+\\.\\d+\\.\\d+ | \\d+\\.\\d+\\-[a-z]+$ | \\d+\\.\\d+\\.\\d+\\-[a-z]+$/",
-      "groupName": "Go docker images",
-      "separateMajorMinor": true,
-      "separateMinorPatch": true,
-      "major": {
-        "enabled": false
-      },
-      "minor": {
-        "enabled": true
-      },
-      "patch": {
-        "enabled": true
-      },
-      "matchPackageNames": [
-        "/^golang$/"
-      ]
+      "groupName": "Go Docker images"
     }
-  ]
+  ],
+  "docker": {
+    "fileMatch": [
+      "(^|/|\\.)Dockerfile$",
+      "(^|/)docker-compose[^/]*\\.ya?ml$"
+    ],
+    "versioning": "docker",
+    "pinDigests": true
+  }
 }
