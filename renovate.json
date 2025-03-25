@@ -12,7 +12,6 @@
       "enabled": true,
       "ignorePaths": [],
       "pinDigests": true,
-      "versioning": "docker",
       "groupName": "Go Docker images"
     }
   ],
