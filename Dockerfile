@@ -1,1 +1,1 @@
-FROM golang:1.21.1@sha256:19600fdcae402165dcdab18cb9649540bde6be7274dedb5d205b2f84029fe909
+FROM golang:1.21.1
