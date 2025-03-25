@@ -1,0 +1,39 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended"
+  ],
+  "enabledManagers": [
+    "dockerfile"
+  ],
+  "packageRules": [
+    {
+      "matchCategories": [
+        "docker"
+      ],
+      "enabled": true
+    },
+    {
+      "matchDatasources": [
+        "docker"
+      ],
+      "versioning": "docker",
+      "allowedVersions": "/\\d+\\.\\d+$ | \\d+\\.\\d+\\.\\d+ | \\d+\\.\\d+\\-[a-z]+$ | \\d+\\.\\d+\\.\\d+\\-[a-z]+$/",
+      "groupName": "Go docker images",
+      "separateMajorMinor": true,
+      "separateMinorPatch": true,
+      "major": {
+        "enabled": false
+      },
+      "minor": {
+        "enabled": true
+      },
+      "patch": {
+        "enabled": true
+      },
+      "matchPackageNames": [
+        "/^golang$/"
+      ]
+    }
+  ]
+}
