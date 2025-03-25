@@ -8,7 +8,7 @@
       "description": "Update Go Docker images to latest patch within current minor",
       "matchManagers": ["dockerfile", "docker-compose"],
       "matchPackageNames": ["golang"],
-      "allowedVersions": "{{currentMajor}}.{{currentMinor}}.x",
+      "allowedVersions": "/\\d+\\.\\d+$ | \\d+\\.\\d+\\.\\d+$ | \\d+\\.\\d+\\-[a-z]+$ | \\d+\\.\\d+\\.\\d+\\-[a-z]+$/",
       "versioning": "docker",
       "pinDigests": true,
       "groupName": "Go Docker patch updates"
