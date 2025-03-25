@@ -3,24 +3,38 @@
   "extends": [
     "config:recommended"
   ],
+  "enabledManagers": [
+    "dockerfile"
+  ],
   "packageRules": [
     {
-      "description": "Update Go Docker images to latest patch within current minor",
-      "matchManagers": ["dockerfile", "docker-compose"],
-      "matchPackageNames": ["golang"],
-      "allowedVersions": "1.20.x",
+      "matchCategories": [
+        "docker"
+      ],
+      "enabled": true,
+      "pinDigests": true
+    },
+    {
+      "matchDatasources": [
+        "docker"
+      ],
       "versioning": "docker",
-      "pinDigests": true,
-      "groupName": "Go Docker patch updates"
+      "allowedVersions": "/\\d+\\.\\d+$ | \\d+\\.\\d+\\.\\d+ | \\d+\\.\\d+\\-[a-z]+$ | \\d+\\.\\d+\\.\\d+\\-[a-z]+$/",
+      "groupName": "Golang docker images",
+      "separateMajorMinor": true,
+      "separateMinorPatch": true,
+      "major": {
+        "enabled": false
+      },
+      "minor": {
+        "enabled": true
+      },
+      "patch": {
+        "enabled": true
+      },
+      "matchPackageNames": [
+        "/^golang$/"
+      ]
     }
-  ],
-  "docker": {
-    "fileMatch": [
-      "(^|/)Dockerfile$",
-      "(^|/)docker-compose..*ya?ml$"
-    ],
-    "pinDigests": true
-  },
-  "postUpdateOptions": ["gomodTidy"],
-  "platformAutomerge": true
+  ]
 }
