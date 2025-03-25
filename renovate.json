@@ -1,29 +1,48 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended"
-  ],
-  "packageRules": [
-    {
-      "description": "Update minor/patch versions for Go Docker images",
-      "matchManagers": ["dockerfile", "docker-compose"],
-      "allowedVersions": "/\\d+\\.\\d+$ | \\d+\\.\\d+\\.\\d+$ | \\d+\\.\\d+\\-[a-z]+$ | \\d+\\.\\d+\\.\\d+\\-[a-z]+$/",
-      "matchPackagePrefixes": ["golang"],
-      "matchUpdateTypes": ["minor", "patch"],
-      "enabled": true,
-      "ignorePaths": [],
-      "pinDigests": true,
-      "groupName": "Go Docker images"
-    }
-  ],
-  "docker": {
-    "fileMatch": [
-      "(^|/|\\.)Dockerfile$",
-      "(^|/)docker-compose[^/]*\\.ya?ml$"
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": [
+        "config:recommended"
     ],
-    "versioning": "docker",
-    "pinDigests": true
-  },
-  "postUpdateOptions": ["gomodTidy"],
-  "platformAutomerge": true
+    "packageRules": [
+        {
+            "description": "Update minor/patch versions for Go Docker images",
+            "matchManagers": [
+                "dockerfile",
+            ],
+            "allowedVersions": "/\\d+\\.\\d+$ | \\d+\\.\\d+\\.\\d+$ | \\d+\\.\\d+\\-[a-z]+$ | \\d+\\.\\d+\\.\\d+\\-[a-z]+$/",
+            "matchPackagePrefixes": [
+                "golang"
+            ],
+            "enabled": true,
+            "ignorePaths": [],
+            "pinDigests": true,
+            "separateMajorMinor": true,
+            "separateMinorPatch": true,
+            "matchCategories": [
+                "docker"
+            ],
+            "major": {
+                "enabled": false
+            },
+            "minor": {
+                "enabled": true
+            },
+            "patch": {
+                "enabled": true
+            },
+            "groupName": "Go Docker images"
+        }
+    ],
+    "docker": {
+        "fileMatch": [
+            "(^|/|\\.)Dockerfile$",
+            "(^|/)docker-compose[^/]*\\.ya?ml$"
+        ],
+        "versioning": "docker",
+        "pinDigests": true
+    },
+    "postUpdateOptions": [
+        "gomodTidy"
+    ],
+    "platformAutomerge": true
 }
