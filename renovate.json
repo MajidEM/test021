@@ -1,40 +1,11 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended"
-  ],
-  "enabledManagers": [
-    "dockerfile"
-  ],
   "packageRules": [
     {
-      "matchCategories": [
-        "docker"
-      ],
-      "enabled": true,
-      "pinDigests": true
-    },
-    {
-      "matchDatasources": [
-        "docker"
-      ],
-      "versioning": "docker",
-      "allowedVersions": "/\\d+\\.\\d+$ | \\d+\\.\\d+\\.\\d+ | \\d+\\.\\d+\\-[a-z]+$ | \\d+\\.\\d+\\.\\d+\\-[a-z]+$/",
-      "groupName": "Golang docker images",
-      "separateMajorMinor": true,
-      "separateMinorPatch": true,
-      "major": {
-        "enabled": false
-      },
-      "minor": {
-        "enabled": true
-      },
-      "patch": {
-        "enabled": true
-      },
-      "matchPackageNames": [
-        "/^golang$/"
-      ]
+      "matchPackageNames": ["golang"],
+      "matchDatasources": ["docker"],
+      "allowedVersions": "/^{{{replace currentVersion '^(\\d+\\.\\d+)(\\.|$|\\-).*' '$1'}}}\\.\\d+(-.*)?$/",
+      "description": "Update Go Docker images to latest patch within minor version"
     }
   ]
 }
