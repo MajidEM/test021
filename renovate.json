@@ -3,12 +3,15 @@
   "extends": [
     "config:recommended"
   ],
+  "enabledManagers": [
+      "dockerfile"
+    ],
   "packageRules": [
     {
       "description": "Update minor/patch versions for Go Docker images",
-      "matchManagers": ["dockerfile", "docker-compose"],
       "matchPackagePrefixes": ["golang"],
       "matchUpdateTypes": ["minor", "patch"],
+      "versioning": "docker",
       "enabled": true,
       "ignorePaths": [],
       "pinDigests": true,
