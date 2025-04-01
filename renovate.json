@@ -6,12 +6,12 @@
   "enabledManagers": [
     "dockerfile"
   ],
+  "vulnerabilitySeverity": "HIGH",
   "packageRules": [
     {
       "matchCategories": [
         "docker"
       ],
-      "vulnerabilitySeverity": "HIGH",
       "enabled": true,
       "pinDigests": true
     },
