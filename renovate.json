@@ -8,7 +8,7 @@
   ],
   "vulnerabilityAlerts": {
     "enabled": true,
-    "minimumSeverity": "high"
+    "vulnerabilitySeverity": "HIGH"
   },
   "packageRules": [
     {
