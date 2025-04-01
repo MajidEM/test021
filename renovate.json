@@ -6,6 +6,10 @@
   "enabledManagers": [
     "dockerfile"
   ],
+  "vulnerabilityAlerts": {
+    "enabled": true,
+    "minimumSeverity": "high" // Includes both "high" and "critical"
+  },
   "packageRules": [
     {
       "matchCategories": [
